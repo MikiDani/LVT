@@ -1,0 +1,45 @@
+
+---------------------------
+LARAVEL - VUE JS - TAILWIND
+----------------------------
+
+https://github.com/MikiDani/LVT
+
+root:
+php artisan serve
+http://127.0.0.1:8000/
+
+
+_frontend
+npm run dev
+http://localhost:5173/
+
+
+Ninja tutorial:
+https://www.youtube.com/watch?v=F7PLPJqVotk&list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1&index=2
+
+
+------------
+L backend
+L frontend
+.md 
+.gitignore
+-------------
+BACKEND:
+composer create-project laravel/laravel laravel-vue-tailwind
+php artisan install:api
+
+php artisan migrate
+php artisan serve
+
+FRONTEND:
+npm create vue@latest frontend
+npm install axios
++ tailwind
+npm install -D tailwindcss@3.4.17 postcss autoprefixer	// EZZEL A VERZIÓVAL NINCSEN HIBA
+npx tailwindcss init -p
+
+cd frontend
+npm install
+npm run dev
+
