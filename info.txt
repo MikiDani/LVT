@@ -43,3 +43,6 @@ cd frontend
 npm install
 npm run dev
 
+---
+Backend start server:
+composer dev

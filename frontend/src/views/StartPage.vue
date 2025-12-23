@@ -18,7 +18,7 @@ const getLorem = async () => {
   if (loremText.value) {
     loremText.value = ''
   } else {
-    const response = await axios.get('http://127.0.0.1:8000/api/lorem')
+    const response = await axios.get('http://127.0.0.1:8001/api/lorem')
     console.log(response)
     loremText.value = response.data.text
   }
