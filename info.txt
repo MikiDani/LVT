@@ -66,3 +66,16 @@ jog hozzáadása:
 ---------------
 $role = Role::findByName('admin');
 $role->givePermissionTo('view dashboard');
+
+----
+Komponensek készítése:
+php artisan make:component Auth/Card
+php artisan make:component Alert
+php artisan make:component Form/Input
+
+most jön:
+php artisan make:component Layout
+php artisan make:component Sidebar
+php artisan make:component Topbar
+php artisan make:component Dashboard/Index
+

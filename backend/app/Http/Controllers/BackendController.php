@@ -56,7 +56,7 @@ class BackendController extends Controller
 		// SAVE TOKEN TO SESSION
 		session(['admin_token' => $token]);
 
-		$user->assignRole('visitor'); //!!!
+		// $user->assignRole('visitor'); //!!!
 
 		return redirect()->route('dashboard');
 	}
@@ -101,21 +101,23 @@ class BackendController extends Controller
 	}
 
 	public function admin_logout()
-{
-	$user = Auth::user();
+	{
+		$user = Auth::user();
 
-	if ($user) {
-		$user->tokens()->delete();
+		if ($user) {
+			$user->tokens()->delete();
+		}
+
+		Auth::logout();
+
+		request()->session()->forget('admin_token');
+		request()->session()->invalidate();
+		request()->session()->regenerateToken();
+
+		return redirect()->route('admin_login');
 	}
 
-	Auth::logout();
-
-	request()->session()->forget('admin_token');
-	request()->session()->invalidate();
-	request()->session()->regenerateToken();
-
-	return redirect()->route('admin_login');
-}
+	// ---
 
 	public function dashboard(Request $request)
 	{
@@ -125,7 +127,7 @@ class BackendController extends Controller
 				route('dashboard') => 'Dashboard'
 			],
 			'data' => null,
-		  ]);
+		]);
 	}
 
 	public function logout(Request $request)

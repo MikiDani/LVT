@@ -12,6 +12,11 @@
 @section('content')
 	<div class="" style="color:black;">
 		Dashboard...
+
+		<hr class="mt-4">
+		<h3>{{ Auth::user()->name }} {{ Auth::user()->email }}</h3>
+		<hr class="mb-4">
+
 		@role('admin')
 			@dump(Auth::user())
 		@endrole
