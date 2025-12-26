@@ -11,7 +11,17 @@
 
 @section('content')
 	<div class="" style="color:black;">
-        Dashboard...
-    </div>
-    @dump($breadcrumbs)
+		Dashboard...
+		@role('admin')
+			@dump(Auth::user())
+		@endrole
+
+		@role('visitor')
+			<div class="p-3 bg-blue-400 text-brown-900">VISITOR</div>
+		@endrole
+
+		@can('view dashboard')
+			<div class="p-3 bg-amber-400 text-brown-900">View dashboard</div>
+		@endcan
+	</div>
 @endsection

@@ -18,7 +18,6 @@ http://localhost:5173/
 Ninja tutorial:
 https://www.youtube.com/watch?v=F7PLPJqVotk&list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1&index=2
 
-
 ------------
 L backend
 L frontend
@@ -39,10 +38,31 @@ npm install axios
 npm install -D tailwindcss@3.4.17 postcss autoprefixer	// EZZEL A VERZIÓVAL NINCSEN HIBA
 npx tailwindcss init -p
 
+https://tailwindcss.com/docs/installation/using-vite
+
 cd frontend
 npm install
 npm run dev
 
 ---
-Backend start server:
+!!! Backend start server:
 composer dev
+
+----
+Backend Spatie hozzáadása:
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+---
+php artisan optimize:clear
+php artisan migrate
+-----------------------
+
+role            : csoport
+permission	    : konkrét jog
+@role	        : role ellenőrzés
+@can	        : permission ellenőrzés
+
+jog hozzáadása: 
+---------------
+$role = Role::findByName('admin');
+$role->givePermissionTo('view dashboard');

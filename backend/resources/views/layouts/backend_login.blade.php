@@ -6,20 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>{{ config('add.sitename') }}</title>
-
 	@include('layouts.head')
 </head>
 
-<body>
-	@auth
-		@include('layouts.menu')
-			
-		@yield('content')
-			
-		@include('layouts.footer')
-
-		@include('layouts.scripts')
-	@endauth
+<body>        
+	@yield('content')
+	@include('layouts.scripts')
 </body>
 
 </html>

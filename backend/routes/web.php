@@ -3,14 +3,22 @@
 use App\Http\Controllers\BackendController;
 use Illuminate\Support\Facades\Route;
 
+use Spatie\Permission\Traits\HasRoles;
+
 /*
 |--------------------------------------------------------------------------
 | Admin login
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [BackendController::class, 'admin_login'])->name('admin.login');
-Route::post('/admin/login', [BackendController::class, 'admin_login_post'])->name('admin.login.post');
+Route::get('/test', [BackendController::class, 'test'])->name('test');
+
+Route::get('/admin/registration', [BackendController::class, 'admin_registration'])->name('admin_registration');
+Route::post('/admin/registration', [BackendController::class, 'admin_registration_post'])->name('admin_registration_post');
+
+Route::get('/', [BackendController::class, 'admin_login'])->name('admin_login');
+Route::post('/admin/login', [BackendController::class, 'admin_login_post'])->name('admin_login_post');
+Route::get('/admin/logout', [BackendController::class, 'admin_logout'])->name('admin_logout');
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +26,7 @@ Route::post('/admin/login', [BackendController::class, 'admin_login_post'])->nam
 |--------------------------------------------------------------------------
 */
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum', 'role:visitor')->group(function () {
 
     Route::get('/admin/dashboard', [BackendController::class, 'dashboard'])->name('dashboard');
     Route::post('/admin/dashboard', [BackendController::class, 'dashboard_post']);
